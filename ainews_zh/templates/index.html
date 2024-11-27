@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cafe News--AI如咖啡，激发创意每一刻！</title>
+    <meta name="description" content="Discover the latest in AI news and tool recommendations at aicafe.top. Stay ahead with cutting-edge AI insights and innovative technology solutions, all in one place. Explore how AI can fuel your creativity and enhance your tech journey.">
+    <meta property="og:description" content="Discover the latest in AI news and tool recommendations at aicafe.top. Stay ahead with cutting-edge AI insights and innovative technology solutions, all in one place. Explore how AI can fuel your creativity and enhance your tech journey.">
+    <meta name="twitter:description" content="Discover the latest in AI news and tool recommendations at aicafe.top. Stay ahead with cutting-edge AI insights and innovative technology solutions, all in one place. Explore how AI can fuel your creativity and enhance your tech journey.">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Japanese -->
+    <meta property="og:description:ja" content="aicafe.topで最新のAIニュースとツールのおすすめを発見してください。最先端のAIインサイトと革新的なテクノロジーソリューションを一箇所で確認し、創造性を刺激し、テクノロジーの旅を向上させましょう。">
+    <meta name="twitter:description:ja" content="aicafe.topで最新のAIニュースとツールのおすすめを発見してください。最先端のAIインサイトと革新的なテクノロジーソリューションを一箇所で確認し、創造性を刺激し、テクノロジーの旅を向上させましょう。">
+
+    <!-- Chinese -->
+    <meta property="og:description:zh" content="在aicafe.top探索最新的AI资讯和工具推荐。紧跟前沿科技，发现创新解决方案，激发您的创意和技术探索之旅。">
+    <meta name="twitter:description:zh" content="在aicafe.top探索最新的AI资讯和工具推荐。紧跟前沿科技，发现创新解决方案，激发您的创意和技术探索之旅。">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3919623004867023"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .app-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #222;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #222;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            /* Ensure vertical alignment */
+        }
+
+        .home-button {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #FFD700;
+            font-size: 16px;
+            font-weight: bold;
+            background: #333;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            transition: background 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .home-button:hover {
+            background: #444;
+        }
+
+        .home-button .icon {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+
+        .app-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #FFD700;
+            background-color: #333;
+            padding: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+            flex-grow: 1;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+        }
+
+        .tab {
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            background: #555;
+            color: #FFD700;
+            transition: background 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab.active {
+            background: #FFD700;
+            color: #333;
+        }
+
+        .feed-container {
+            background: #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+        }
+
+        .entry {
+            margin-bottom: 20px;
+        }
+
+        .entry-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .entry-title a {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .entry-title a:hover {
+            color: #FFA500;
+        }
+
+        .entry-content {
+            font-size: 16px;
+            color: #FFF;
+            margin-bottom: 10px;
+        }
+
+        .entry-link a {
+            font-size: 16px;
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .entry-link a:hover {
+            text-decoration: underline;
+            color: #FFA500;
+        }
+
+        .entry-published {
+            font-size: 14px;
+            color: #888;
+            text-align: right;
+        }
+
+        .loading {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+
+        .slogan {
+            font-size: 16px;
+            font-weight: normal;
+            text-align: center;
+            color: #FFF;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            background-color: #333;
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="sticky-header">
+            <a href="https://aicafe.top" class="home-button">
+                <span class="icon">🏠</span> <!-- 小房子图标 -->
+                AI工具
+            </a>
+            <div class="app-title">AI Cafe News🚀
+
+            </div>
+        </div>
+        <div class="slogan">AI如咖啡，激发创意每一刻！</div>
+        <div class="tabs">
+            <div class="tab active" data-topic="artificial_intelligence">人工智能</div>
+            <div class="tab" data-topic="ChatGPT">ChatGPT</div>
+            <div class="tab" data-topic="OpenAI">OpenAI</div>
+        </div>
+
+        <div class="feed-container" id="feed-container">
+            <div class="loading" id="loading">Loading...</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab');
+            const feedContainer = document.getElementById('feed-container');
+            const loading = document.getElementById('loading');
+
+            function loadFeed(topic) {
+                feedContainer.scrollTop = 0;
+                loading.style.display = 'block';
+
+                fetch(`/feed/${topic}`)
+                    .then(response => response.json())
+                    .then(feed => {
+                        feedContainer.innerHTML = '';
+
+                        feed.entries.forEach(entry => {
+                            const entryDiv = document.createElement('div');
+                            entryDiv.classList.add('entry');
+
+                            entryDiv.innerHTML = `
+                                <div class="entry-title" style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">
+                                    <a href="${entry.link}" target="_blank" style="color: #FFD700; text-decoration: none;">${entry.title}</a>
+                                </div>
+                                <div class="entry-content">${entry.content}</div>
+                                <div class="entry-link"><a href="${entry.link}" target="_blank" style="color: #FFD700;">Read more</a></div>
+                                <div class="entry-published">Published: ${new Date(entry.published).toLocaleString()}</div>
+                            `;
+
+                            feedContainer.appendChild(entryDiv);
+                        });
+
+                        loading.style.display = 'none';
+                    })
+                    .catch(error => {
+                        console.error('Error fetching feed:', error);
+                        feedContainer.innerHTML = 'Failed to load feed.';
+                        loading.style.display = 'none';
+                    });
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelector('.tab.active').classList.remove('active');
+                    tab.classList.add('active');
+                    loadFeed(tab.getAttribute('data-topic'));
+                });
+            });
+
+            loadFeed('artificial_intelligence');
+        });
+    </script>
+</body>
+
+</html>
