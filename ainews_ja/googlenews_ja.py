@@ -62,10 +62,11 @@ def get_feed(topic):
                 for entry in feed.entries
             ]
         }
-        # 保存缓存
-        os.makedirs(CACHE_DIR, exist_ok=True)
-        with open(cache_file, 'w') as f:
-            json.dump(feed_data, f)
+        if feed_data['entries']:
+            # 保存缓存
+            os.makedirs(CACHE_DIR, exist_ok=True)
+            with open(cache_file, 'w') as f:
+                json.dump(feed_data, f)
     
     return jsonify(feed_data)
 
